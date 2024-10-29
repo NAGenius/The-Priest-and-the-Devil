@@ -93,11 +93,12 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction {
         }
         else {
             int leftPriestCount, rightPriestCount, leftDevilCount, rightDevilCount;
-            leftPriestCount = leftShoreController.GetShore().priestCount + (boatController.GetBoatModel().isRight ? 0 : boatController.GetBoatModel().priestCount);
-            rightPriestCount = rightShoreController.GetShore().priestCount + (boatController.GetBoatModel().isRight ? boatController.GetBoatModel().priestCount : 0);
-            leftDevilCount = leftShoreController.GetShore().devilCount + (boatController.GetBoatModel().isRight ? 0 : boatController.GetBoatModel().devilCount);
-            rightDevilCount = rightShoreController.GetShore().devilCount + (boatController.GetBoatModel().isRight ? boatController.GetBoatModel().devilCount : 0);
+            leftPriestCount = leftShoreController.GetShore().priestCount;
+            rightPriestCount = rightShoreController.GetShore().priestCount;
+            leftDevilCount = leftShoreController.GetShore().devilCount;
+            rightDevilCount = rightShoreController.GetShore().devilCount;
             if (leftPriestCount != 0 && leftPriestCount < leftDevilCount || rightPriestCount != 0 && rightPriestCount < rightDevilCount) {
+                // Debug.Log(leftPriestCount + " " + leftDevilCount + " " + rightPriestCount + " " + rightDevilCount);
                 this.gameObject.GetComponent<UserGUI>().gameMessage = "Game Over!";
                 isRunning = false;
             }
